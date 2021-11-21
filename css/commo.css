@@ -97,3 +97,65 @@ header>.icon-user {
     width: 10vw;
     border-radius: 10px;
 }
+.erromsg {
+    width: 100%;
+}
+@media screen and (max-width: 900px) {
+    .login_panel,.reg_panel {
+        width: 60vw;
+        height: 50vh;
+        margin-left: -20vw;
+        background: rgba(189, 8, 80, 0.449);
+    }  
+    header>.icon-user {
+        font-size: 15vw;
+    }
+
+    .container input {
+        padding-left: 5vw;
+        margin-left: -5vw;
+        height: 5vh;
+        width: 40vw;
+    }
+}
+@media screen and (max-width: 400px) {
+    .login_panel,.reg_panel {
+        width: 100vw;
+        height: 50vh;
+        margin-left: -35vw;
+        background: rgba(23, 38, 135, 0.449);
+    }  
+    .login_panel .icon-close {
+        font-size: 5vw;
+    }
+    .title{
+        margin-left: -20vw;
+    }
+    .container {
+        margin-left: -20vw;
+    }
+    #login_button {
+        width: 20vw;
+    }
+    .container input {
+        padding-left: 4rem;
+        margin-left: -1rem;
+        height: 5vh;
+        width: 50rem;
+    }
+    .erromsg {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    #login_button,#reg_button{
+        margin-top: 5vh;
+        padding: 20px;
+        width: 10rem;
+        border-radius: 10px;
+    }
+}
+
+
+  
