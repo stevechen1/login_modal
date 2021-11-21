@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login_model</title>
+    <link rel="stylesheet" href="css/commo.css">
+    <link rel="stylesheet" href="font/iconfont.css">
+    <link rel="stylesheet" href="login.js">
+</head>
+<body>
+    <header>
+        <a href="#" class="iconfont icon-user"></a>
+    </header>
+    <div class="box box1">
+        <form action="/login" method="post">
+            <div class="login_panel ">
+                <div class="title clearfix">
+                    <span class="login_selec">登录</span>
+                    <span class="ltr">注册</span>
+                </div>
+                <div class="erromsg"></div>
+                <div class="iconfont icon-close"></div>
+                <ul class="container">
+                    <li class="input_field">
+                        <div class="iconfont icon-user"></div>
+                        <input name="username" type="text" placeholder="输入用户名" >
+                    </li>
+                    <li class="input_field">
+                        <div class="iconfont icon-password"></div>
+                        <input name="password" type="password" placeholder="输入密码" >
+                    </li>
+                </ul>
+                <input type="submit" name="button" value="登录" id="login_button">
+            </div>
+        </form>
+    </div>
+<div class="box box2">
+<form action="/reg" method="post">
+    <div class="reg_panel">
+        <div class="title clearfix">
+            <span class="rtl">登录</span>
+            <span class="reg_selec">注册</span>
+        </div>
+        <div class="erromsg"></div>
+        <div class="iconfont icon-close"></div>
+        <ul class="container">
+            <li class="input_field">
+                <div class="iconfont icon-user"></div>
+                <input name="username" type="text" placeholder="输入用户名" >
+            </li>
+            <li class="input_field">
+                <div class="iconfont icon-password"></div>
+                <input name="password1" type="password" placeholder="输入密码" >
+            </li>
+            <li class="input_field">
+                <div class="iconfont icon-password"></div>
+                <input name="password2" type="password" placeholder="再次输入密码">
+            </li>
+        </ul>
+        <input type="submit" name="button" value="注册" id="reg_button">
+    </div>
+</form>
+</div>
+</body>
+<script>
+    //
+    var $ = function(selector){
+    return document.querySelector(selector)
+}
+var $$ = function(selector){
+    return document.querySelectorAll(selector)
+}
+$('header .iconfont').onclick = function (e){
+    e.stopPropagation()
+    $('.box1').style.display = 'block'
+}
+$('.login_panel').addEventListener('click',function(e){
+    e.stopPropagation()
+    if(e.target.classList.contains('ltr')){
+        $('.box1').style.display = 'none'
+        $('.box2').style.display = 'block'
+        $('.login_panel').classList.add('trans1')
+    }
+    if(e.target.classList.contains('icon-close')){
+        $('.box1').style.display = 'none'
+    }
+})
+$('.reg_panel').addEventListener('click',function(e){
+    e.stopPropagation()
+    if(e.target.classList.contains('rtl')){
+        $('.box1').style.display = 'flex'
+        $('.box2').style.display = 'none'
+    }
+    if(e.target.classList.contains('icon-close')){
+        $('.box2').style.display = 'none'
+    }
+})
+document.addEventListener('click',function(){
+    $('.box').style.display = 'none'
+})
+//判断输入内容
+$('.box1 form').addEventListener('submit',function(e) {
+    e.preventDefault()
+    if(!/^\w{3,8}$/.test($('.login_panel input[name=username]').value)){
+        $('.box1 .erromsg').innerText = '用户名需输入3-8个字符，包括字母数字下划线'
+        return false
+    }
+    if(!/^\w{6,10}$/.test($('.login_panel input[name=password]').value)){
+        $('.box1 .erromsg').innerText = '密码需输入6-10个字符，包括字母数字下划线'
+        return false
+    }
+    this.submit()
+})
+$('.box2 form').addEventListener('submit',function(e) {
+    e.preventDefault()
+    if(!/^\w{3,8}$/.test($('.reg_panel input[name=username]').value)){
+        $('.box2 .erromsg').innerText = '用户名需输入3-8个字符，包括字母数字下划线'
+        return false
+    }
+    if(!/^\w{6,10}$/.test($('.reg_panel input[name=password1]').value)){
+        $('.box2 .erromsg').innerText = '密码需输入6-10个字符，包括字母数字下划线'
+        return false
+    }
+    if($('.box2 input[name=password1]').value !== $('.box2 input[name=password2]').value){
+        $('.box2 .erromsg').innerText = '两次输入的密码不一致'
+        return false
+    }
+    this.submit()
+})
+</script>
+</html>
